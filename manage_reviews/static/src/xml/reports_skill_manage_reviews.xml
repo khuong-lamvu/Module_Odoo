@@ -1,0 +1,101 @@
+<templates id="template" xml:space="preserve">
+    <t t-name="ReportSkill">
+        <div class="container-fluid col-sm-12 col-md-12 col-lg-12 col-sm-12 bulma_dashboard" id="loan_dashboard">
+            <div class="o_dashboard"></div>
+            <div class="row">
+                <div class="col-sm-6" style="max-width:250px;float:left; margin-top:20px">
+                    <!-- <h4>Tổng Quan</h4> -->
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6 offset-md-3">
+                    <div class="card overflow-hidden">
+                        <div class="card-header">
+                            <div class="row">
+                                <div class="col-md-6 offset-md-3">
+                                    <select class="form-control" id="select_phong_ban"></select>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <div class="text-center">
+                                        <button style="margin-top: 10px " type="button" class="btn btn-info" id="sort_data">Lọc dữ liệu</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <br />
+
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <h3 class="text-center text-muted">
+                                    Biểu Đồ Thống Kê Kỹ Năng Của Nhân Viên
+                                </h3>
+                            </div>
+                            <div class="card-body">
+                                <div class="chart-container">
+                                    <canvas id="barChart"></canvas>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <style>
+                canvas {
+                    background: #fff;
+                    height: 500px;
+                }
+
+                /* Thêm phần CSS cho bảng */
+                .skill-table {
+                    width: 100%;
+                }
+
+                .skill-table th,
+                .skill-table td {
+                    border: 1px solid #ddd;
+                    padding: 8px;
+                }
+
+                .skill-table th {
+                    background-color: #f2f2f2;
+                }
+
+                .skill-table tr:nth-child(even) {
+                    background-color: #f9f9f9;
+                }
+
+                .skill-table tr:hover {
+                    background-color: #ddd;
+                }
+            </style>
+
+            <br />
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <h3 class="text-center text-muted">
+                                    Bảng Thống Kê Các Mức Độ Kỹ Năng Của Nhân Viên
+                                </h3>
+                            </div>
+                            <div class="card-body">
+                                <div id="employees_skills_matrix"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </t>
+</templates>

@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="template" xml:space="preserve">
+     <t t-name="DashboardReviews">
+         <style>
+             html .o_web_client > .o_action_manager {
+                overflow-y: auto;
+             }
+         </style>
+
+         <div class="container-fluid col-sm-12 col-md-12 col-lg-12 col-sm-12 bulma_dashboard" id="loan_dashboard">
+            <div class="o_dashboard"/>
+            <div class="row">
+                <div class="col-sm-6" style="max-width:250px;float:left; margin-top:20px">
+                    <h4>Tổng Quan</h4>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card overflow-hidden">
+                        <div class="card-header">
+                            <div class="row">
+                                <div class="col-sm-6 margin-control">
+                                    <select class="form-control" id="select_phong_ban">
+
+                                    </select>
+                                </div>
+
+                                <div class="col-sm-6 margin-control">
+                                     <input class="form-control" id="date_range" type="text" name="daterange"/>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <div class="text-center">
+                                        <button style="margin-top: 10px "
+                                                type="button"
+                                                class="btn btn-success"
+                                                id="sort_data">Lọc dữ liệu
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <br/>
+            <div class="container">
+                <div class="row">
+                    <div class="col-6">
+                        <div>
+                            <div class="card-header">
+                                <h3 class="text-center text-muted">
+                                    Xếp loại
+                                </h3>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <div>
+                                <canvas id="status_chart">
+                                </canvas>
+                            </div>
+                            <div class="row"
+                                 style="font-size: 11px; text-align: center;  padding:10px;"
+                                 id="status_chart_legends">
+                                <span style=" margin-left: 10px;">
+                                    <span style="height:14px;width:14px;display: inline-block;margin-right: 10px;background-color:#8064a2">
+
+                                    </span>
+                                    <span style="color:black;font-size: 15px;">
+                                        Yếu
+                                    </span>
+                                </span>
+                                <span style=" margin-left: 10px;">
+                                    <span style="height:14px;width:14px;display: inline-block;margin-right: 10px;background-color:#4f81bd">
+
+                                    </span>
+                                    <span style="color:black;font-size: 15px;">
+                                        Trung bình
+                                    </span>
+                                </span>
+                                <span style=" margin-left: 10px;">
+                                    <span style="height:14px;width:14px;display: inline-block;margin-right: 10px;background-color:#ed7d31">
+
+                                    </span>
+                                    <span style="color:black;font-size: 15px;">
+                                        Khá
+                                    </span>
+                                </span>
+                                <span style=" margin-left: 10px;">
+
+                                    <span style="height:14px;width:14px;display: inline-block;margin-right: 10px;background-color:#599a66">
+                                    </span>
+                                    <span style="color:black;font-size: 15px;">
+                                        Tốt
+                                    </span>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <div class="card-header">
+                            <h3 class="text-center text-muted">
+                                KPI
+                            </h3>
+                        </div>
+                        <div class="card-body">
+                            <div>
+                                <canvas id="kpi_chart">
+
+                                </canvas>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+             <br/>
+            <div class="card overflow-hidden" id="div_table" style="margin-bottom:10px">
+                <div class="card-header">
+                    <h3 class="mb-0">
+                        Thông Tin Đánh Giá
+                    </h3>
+                </div>
+                <div class="card-body" style="border-top: 1px solid #eeeeee;padding:0px">
+
+
+                    <div id="tab_manage_reviews_all" class="tabcontent" style="display:block">
+                        <div class="table-responsive scrollbar table_scroll">
+                            <table class="table mb-0 fs--1 border-200 table-borderless">
+                                <thead class="bg-light">
+                                    <tr class="text-800 bg-200">
+                                        <th style="width:15%" class="align-middle text-left">Nhân Viên</th>
+                                        <th style="width:12%" class="align-middle text-center">Điểm KPI<br/>(Hiện Tại)</th>
+                                        <th style="width:8%" class="align-middle text-center">Điểm KPI<br/>(6 Tháng Trước)</th>
+                                        <th style="width:8%" class="align-middle text-center">Xếp loại<br/>(6 Tháng Trước)</th>
+                                        <th style="width:8%" class="align-middle text-center">Xếp loại<br/>(Hiện tại)</th>
+                                        <th style="width:12%" class="align-middle text-center">Ngày đánh giá</th>
+                                        <th style="width:12%" class="align-middle text-center">Chi Tiết</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="tbody_manage_reviews_all">
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </t>
+</templates>

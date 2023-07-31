@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+
+        <menuitem id="menu_manage_reviews" name="Quản Lý Đánh Giá Nhân Sự"/>
+
+        <record id="manage_reviews_employee_action" model="ir.actions.act_window">
+            <field name="name">Đánh giá nhân sự</field>
+            <field name="res_model">manage_reviews.evaluation</field>
+            <field name="view_mode">kanban,tree,form</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                   Thêm nhân sự đánh giá
+                </p>
+            </field>
+        </record>
+
+        <record id="manage_reviews_action" model="ir.actions.act_window">
+            <field name="name">Biểu mẫu đánh giá</field>
+            <field name="res_model">manage_reviews.template</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                    Tạo mới biểu mẫu đánh giá
+                </p>
+            </field>
+        </record>
+
+         <menuitem
+                id="manage_reviews_employee"
+                name="Đánh giá nhân sự"
+                action="manage_reviews_employee_action"
+                parent="menu_manage_reviews"
+        />
+
+        <menuitem
+                id="manage_reviews_template"
+                name="Biểu Mẫu"
+                action="manage_reviews_action"
+                parent="menu_manage_reviews"
+        />
+
+         <menuitem
+                id="dashboard_manage_reviews"
+                name="Dashboard"
+                action="dashboard_action"
+                parent="menu_manage_reviews"
+        />
+
+        <menuitem
+                id="reports_skill_manage_reviews"
+                name="Báo cáo kỹ năng"
+                action="reports_skill_action"
+                parent="menu_manage_reviews"
+        />
+
+    </data>
+</odoo>

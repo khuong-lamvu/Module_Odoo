@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <template id="webclient_bootstrap" inherit_id="web.webclient_bootstrap">
+            <xpath expr="." position="inside">
+                <script type="text/javascript" src="bugs_management/static/src/js/dashboard_bugs_management.js"/>
+            </xpath>
+        </template>
+    </data>
+</odoo>

@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <data>
+
+        <record id="bugs_management_bugs_form_view" model="ir.ui.view">
+            <field name="name">bugs_management.bugs.form</field>
+            <field name="model">bugs_management.bugs</field>
+            <field name="arch" type="xml">
+                <form>
+                    <header>
+                        <field name="trang_thai" widget="statusbar"/>
+                        <!--                         <button string="Xử lý" name="action_process_bug" type="object" class="oe_highlight"/>-->
+
+                        <button string="Xử lý" name="action_process_bug" type="object" class="oe_highlight"/>
+
+                    </header>
+                    <sheet>
+                        <group>
+                            <field name="ten_loi"/>
+                            <field name="project_error_id"/>
+                            <field name="function_project_id" domain="[('project_error_id', '=', project_error_id)]" placeholder="Ghi nhận lỗi thuộc chức năng..." string="Lỗi thuộc chức năng"/>
+                            <field name="muc_do_loi"/>
+                            <field name="ngay_tao_loi"/>
+                            <field name="employee_id" string="Người phụ trách"/>
+                        </group>
+                        <notebook>
+                            <page string="Mô tả lỗi dự án">
+                                <field name="mo_ta_loi"/>
+                            </page>
+                            <page string="Tiến độ công việc">
+                                <field name="history_ids">
+                                    <tree string="Lịch sử báo cáo"
+                                          create="false"
+                                          delete="false">
+                                        <field name="ngay_xu_ly"/>
+                                        <field name="nguoi_xu_ly" readonly="1"/>
+                                        <!--                                        <field name="trang_thai_moi"/>-->
+                                        <field name="mo_ta_qua_trinh"/>
+                                    </tree>
+                                </field>
+                            </page>
+                        </notebook>
+                    </sheet>
+                    <div class="oe_chatter">
+                        <!--                        <field name="message_follower_ids" widget="mail_followers"/>-->
+                        <field name="message_ids" widget="mail_thread"/>
+                        <!--                        <field name="activity_ids" widget="mail_activity"/>-->
+                    </div>
+                </form>
+            </field>
+        </record>
+
+        <record id="view_form_tree" model="ir.ui.view">
+            <field name="name">bugs_management.bugs.tree</field>
+            <field name="model">bugs_management.bugs</field>
+            <field name="arch" type="xml">
+                <tree string="Lỗi dự án">
+                    <field name="ten_loi"/>
+                    <field name="project_error_id"/>
+                    <field name="muc_do_loi"/>
+                    <field name="ngay_tao_loi"/>
+                    <field name="employee_id" string="Người phụ trách" widget="many2one_avatar_employee"/>
+                    <field name="trang_thai" widget="badge"
+                           decoration-warning ="trang_thai == 'choxuly'"
+                           decoration-info = "trang_thai == 'dangxuly'"
+                           decoration-success = "trang_thai == 'hoanthanh'"
+                           decoration-danger  = "trang_thai == 'huy'"
+                    />
+                </tree>
+            </field>
+        </record>
+
+        <record id="view_student_search" model="ir.ui.view">
+            <field name="name">bugs_management.bugs.search</field>
+            <field name="model">bugs_management.bugs</field>
+            <field name="arch" type="xml">
+                <search string="Search Status">
+                    <field name="ten_loi" string="Tên lỗi"/>
+                    <field name="project_error_id" string="Tên dự án"/>
+                    <field name="employee_id" string="Tên người phụ trách"/>
+                    <searchpanel>
+                        <field name="muc_do_loi" icon="fa-level-up"/>
+                        <field name="trang_thai" icon="fa-exclamation-triangle"/>
+                    </searchpanel>
+                </search>
+            </field>
+        </record>
+
+    </data>
+</odoo>

@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <data>
+        <record id="reviews_model_form" model="ir.ui.view">
+            <field name="name">manage_reviews.template.form</field>
+            <field name="model">manage_reviews.template</field>
+            <field name="arch" type="xml">
+                <form string="Template Form">
+                    <sheet>
+                        <group>
+                            <field name="name"/>
+                            <field name="ngay_tao"/>
+                        </group>
+                        <notebook>
+                            <page string="Nội dung">
+                                <field name="criteria_ids" widget="section_and_note_one2many" mode="tree" context="{'default_my_id': active_id}">
+                                    <tree string="Example Lines" editable="bottom">
+                                        <control>
+                                            <create name="add_line_control" string="Thêm nội dung"/>
+                                            <create name="add_note_control" string="Thêm tiêu chí (note)" context="{'default_display_type': 'line_note'}"/>
+                                        </control>
+                                        <field name="sequence" widget="handle" invisible="1"/>
+                                        <field name="name" widget="section_and_note_text"/>
+                                        <field name="display_type" force_save="1" invisible="1"/>
+                                        <field name="trong_so_tc"/>
+                                        <field name="mucdo_yeu" style="white-space: normal; word-break: break-word;"/>
+                                        <field name="mucdo_trungbinh" style="white-space: normal; word-break: break-word;"/>
+                                        <field name="mucdo_kha" style="white-space: normal; word-break: break-word;"/>
+                                        <field name="mucdo_tot" style="white-space: normal; word-break: break-word;"/>
+                                    </tree>
+                                </field>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="view_form_tree" model="ir.ui.view">
+            <field name="name">manage_reviews.template.tree</field>
+            <field name="model">manage_reviews.template</field>
+            <field name="arch" type="xml">
+                <tree string="Nhân sự">
+                    <field name="name"/>
+                </tree>
+            </field>
+        </record>
+
+
+    </data>
+</odoo>
+

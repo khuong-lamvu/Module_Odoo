@@ -1,0 +1,99 @@
+.border-bottom {
+  border-bottom: none !important;
+}
+
+header.o_header_standard > nav {
+  display: none;
+}
+
+body {
+  color: #fff;
+  height: 100%;
+  font-size: 14px;
+  position: relative;
+  background-color: #0d3568;
+  background: linear-gradient(135deg, #0d3568 0%, #106386 100%);
+}
+
+footer#bottom {
+  display: none;
+}
+
+.oe_login_form, .oe_signup_form, .oe_reset_password_form {
+  margin: 20px auto !important;
+}
+
+.bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: url(../img/bg.png);
+  background-size: cover;
+  background-position: center;
+  opacity: 0.2;
+}
+
+.oe_website_login_container {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  max-width: 900px !important;
+  background: transparent !important;
+
+  .custom_logo {
+    border-radius: 50%;
+    -moz-border-radius: 50%;
+    -webkit-border-radius: 50%;
+  }
+
+  .card {
+    box-shadow: -4px 4px 15px #174769;
+
+    .card-body {
+      padding: 0 25px 20px 25px;
+    }
+
+    .login-header {
+      text-align: center;
+      font-weight: bold;
+      background: none;
+      font-size: 18px;
+      color: black;
+      border-bottom: 1px solid #cccccc;
+      padding: 10px 0;
+      margin-bottom: 20px;
+    }
+  }
+
+  .comp_name {
+    text-align: center;
+    font-size: 1.5em;
+    font-weight: 600;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+
+    .title {
+      color: #ffe952;
+      font-size: 28px;
+      margin-bottom: 5px;
+
+      &:nth-child(1) {
+        color: #ffdf00 !important;
+        font-size: 28px;
+        margin-bottom: 5px;
+        font-weight: normal;
+        text-shadow: -2px 2px #052e52;
+      }
+
+      &:nth-child(2) {
+        font-weight: normal;
+        color: #fff;
+        text-shadow: -2px 2px #052e52;
+        font-size: 21px;
+      }
+    }
+  }
+}

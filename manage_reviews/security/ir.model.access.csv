@@ -1,0 +1,5 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_manage_reviews_template,access_manage_reviews_template,model_manage_reviews_template,base.group_user,1,1,1,1
+access_manage_reviews_criteria,access_manage_reviews_criteria,model_manage_reviews_criteria,base.group_user,1,1,1,1
+access_manage_reviews_evaluation,access_manage_reviews_evaluation,model_manage_reviews_evaluation,base.group_user,1,1,1,1
+access_manage_reviews_score,access_manage_reviews_score,model_manage_reviews_score,base.group_user,1,1,1,1

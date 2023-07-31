@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+
+        <record id="action_bugs_management" model="ir.actions.act_window">
+            <field name="name">Quản lý lỗi dự án</field>
+            <field name="res_model">bugs_management.bugs</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                    Thêm lỗi của dự án
+                </p>
+            </field>
+        </record>
+
+        <record id="action_process_bugs_management" model="ir.actions.act_window">
+            <field name="name">Tiến độ xử lý lỗi</field>
+            <field name="res_model">bugs_management.bugs</field>
+            <field name="view_mode">kanban,form</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                </p>
+            </field>
+        </record>
+
+        <record id="action_project_error_bugs_management" model="ir.actions.act_window">
+            <field name="name">Dự án lỗi</field>
+            <field name="res_model">bugs_management.project_error</field>
+            <field name="view_mode">kanban,form</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                    Tạo mới dự án lỗi
+                </p>
+            </field>
+        </record>
+
+
+        <!-- Define the main menu -->
+        <menuitem id="menu_bugs_management" name="Quản Lý Lỗi Dự Án"/>
+        <menuitem
+                id="menu_bugs_management_project_error"
+                name="Dự án lỗi"
+                action="action_project_error_bugs_management"
+                parent="menu_bugs_management"
+        />
+
+        <!-- Define the sub navigation menu -->
+        <menuitem id="menu_bugs_subnav"
+                  name="Danh sách Lỗi Dự Án"
+                  parent="menu_bugs_management"
+        />
+
+        <!-- Add the menuitem children -->
+        <menuitem
+                id="menu_bugs_management_bugs"
+                name="Lỗi Dự Án"
+                action="action_bugs_management"
+                parent="menu_bugs_subnav"
+        />
+
+        <menuitem
+                id="menu_bugs_management_kanban"
+                name="Tiến độ xử lý lỗi"
+                action="action_process_bugs_management"
+                parent="menu_bugs_subnav"
+        />
+
+        <menuitem
+                id="dashboard_bugs_management"
+                name="Dashboard"
+                action="dashboard_action"
+                parent="menu_bugs_management"
+        />
+
+    </data>
+</odoo>

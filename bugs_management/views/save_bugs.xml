@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <data>
+        <record id="bugs_management_history_form_view" model="ir.ui.view">
+            <field name="name">bugs_management.history.form</field>
+            <field name="model">bugs_management.history</field>
+            <field name="arch" type="xml">
+                <form>
+                    <group>
+                        <field name="bug_id" invisible="1"/>
+                        <field name="ngay_xu_ly"/>
+                        <field name="trang_thai_moi"/>
+                        <field name="mo_ta_qua_trinh"/>
+                    </group>
+                    <footer>
+                        <button string="Lưu" type="object" name="save_history" class="oe_highlight"/>
+                        <button string="Hủy" class="oe_link" special="cancel"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+    </data>
+</odoo>

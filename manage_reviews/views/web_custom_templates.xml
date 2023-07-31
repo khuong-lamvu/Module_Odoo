@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <template id="webclient_bootstrap" inherit_id="web.webclient_bootstrap">
+            <xpath expr="." position="inside">
+                <script type="text/javascript" src="manage_reviews/static/src/js/dashboard_manage_reviews.js"/>
+                <script type="text/javascript" src="manage_reviews/static/src/js/reports_skill_manage_reviews.js"/>
+            </xpath>
+        </template>
+    </data>
+</odoo>

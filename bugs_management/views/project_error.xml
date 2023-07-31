@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <data>
+        <!-- Form view for ProjectError -->
+        <record id="view_project_error_form" model="ir.ui.view">
+            <field name="name">bugs_management.project_error.form</field>
+            <field name="model">bugs_management.project_error</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <!--                        Tạo smart Button-->
+                        <div name="button_box" class="oe_button_box">
+                            <button class="oe_stat_button" type="object"
+                                    name="action_issue"
+                                    icon="fa-bug">
+                                <field string="Issue" name="so_lan_xu_ly_loi" widget="statinfo"/>
+                            </button>
+                        </div>
+                        <group>
+                            <group>
+                                <field name="ma_du_an"/>
+                            </group>
+                            <group>
+                                <field name="ten_du_an"/>
+                            </group>
+                            <group>
+                                <field name="quan_ly_du_an"/>
+                            </group>
+                        </group>
+                        <notebook>
+                            <page string="Chức năng dự án">
+                                <field name="chuc_nang_ids" widget="one2many_list">
+                                    <tree editable="top">
+                                        <field name="chuc_nang"/>
+                                        <field name="so_luong_loi"/>
+                                    </tree>
+                                </field>
+                            </page>
+                            <page string="Chi tiết lỗi">
+                                <field name="loi_ids">
+                                    <tree create="false"
+                                          delete="false">
+                                        <field name="function_project_id"/>
+                                        <field name="ten_loi"/>
+                                        <field name="muc_do_loi"/>
+                                        <field name="trang_thai"/>
+                                        <field name="mo_ta_loi"/>
+                                        <field name="ngay_tao_loi"/>
+                                        <field name="employee_name"/>
+                                    </tree>
+                                </field>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+
+
+        <!-- Kanban view for ProjectError -->
+        <record id="view_project_error_kanban" model="ir.ui.view">
+            <field name="name">bugs_management.project_error.kanban</field>
+            <field name="model">bugs_management.project_error</field>
+            <field name="arch" type="xml">
+                <kanban>
+                    <templates>
+                        <t t-name="kanban-box">
+                            <div t-attf-class="oe_kanban_global_click" >
+                                <field name = "checked" widget = "priority"/>
+                                <strong><field name="ten_du_an"/></strong>
+                                <br/>
+                                <field name="ma_du_an"/>
+                                <br/>
+                                <field name="quan_ly_du_an"/>
+                                <field name="quan_ly_du_an" widget="many2one_avatar_employee"/>
+                                <br/>
+                                <field name="sum_error"/><span> Lỗi</span>
+                            </div>
+                        </t>
+                    </templates>
+                </kanban>
+            </field>
+        </record>
+    </data>
+</odoo>

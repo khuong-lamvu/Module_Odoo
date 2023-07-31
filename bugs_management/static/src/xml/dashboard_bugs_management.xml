@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="template" xml:space="preserve">
+    <t t-name="DashboardBugs">
+        <style>
+            html .o_web_client > .o_action_manager {
+                overflow-y: auto;
+            }
+            /* CSS cho các thành phần info-box */
+            .info-box {
+                width: 100px;
+                border-radius: 5px;
+                text-align: center;
+                color: #fff;
+            }
+
+            /* CSS cho các thành phần box notification */
+            .box.notification {
+                padding: 10px;
+                border-radius: 5px;
+            }
+
+            /* CSS cho các heading */
+            .info-box .heading {
+                font-size: 16px;
+                font-weight: bold;
+            }
+
+            /* CSS cho các title */
+            .info-box .title {
+                font-size: 24px;
+            }
+
+            /* Màu nền cho các thành phần */
+            .info-box:nth-child(1) { background: #feb300; }
+            .info-box:nth-child(2) { background: rgb(156, 220, 71); }
+            .info-box:nth-child(3) { background: rgba(245, 40, 145, 0.8); }
+            .info-box:nth-child(4) { background: rgba(233, 8, 0, 1); }
+
+        </style>
+
+        <div class="container-fluid col-sm-12 col-md-12 col-lg-12 col-sm-12 bulma_dashboard" id="loan_dashboard">
+            <div class="o_dashboard"/>
+            <div class="row">
+                <div class="col-sm-6" style="max-width:250px;float:left; margin-top:20px">
+                    <h3>Tổng Quan</h3>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card overflow-hidden">
+                        <div class="card-header">
+                            <div class="row">
+                                <div class="col-sm-6 margin-control">
+                                    <select class="form-control" id="select_project_error">
+
+                                    </select>
+                                </div>
+
+                                <div class="col-sm-6 margin-control">
+                                    <input class="form-control" id="date_range" type="text" name="daterange"/>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <div class="text-center">
+                                        <button style="margin-top: 10px"
+                                                type="button"
+                                                class="btn btn-success"
+                                                id="sort_data">Lọc dữ liệu
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <br/>
+        </div>
+
+        <div class="row" style="margin: 0px 10px 0px 10px; display: flex;
+              justify-content: space-around;">
+                    <!-- Thành phần thứ nhất -->
+                    <div class="col-sm-12 col-md-3 info-box">
+                        <div class="box notification" style="background: #feb300 !important">
+                            <div class="heading">TỔNG SỐ LỖI DỰ ÁN</div>
+                            <div class="title"><span t-esc="widget.datatable.total_forecast"/></div>
+                        </div>
+                    </div>
+
+                    <!-- Thành phần thứ hai -->
+                  <div class="col-sm-12 col-md-3 info-box">
+                        <div class="box notification" style="background: rgb(156, 220, 71) !important">
+                            <div class="heading">ĐÃ HOÀN THÀNH</div>
+                            <div class="title completed-title"><span t-esc="widget.datatable.completed_errors"/></div>
+                        </div>
+                    </div>
+
+                    <!-- Thành phần thứ ba -->
+                  <div class="col-sm-12 col-md-3 info-box">
+                        <div class="box notification" style="background: rgba(245, 40, 145, 0.8) !important">
+                            <div class="heading">CHƯA HOÀN THÀNH</div>
+                            <div class="title incomplete-title"><span t-esc="widget.datatable.incomplete_errors"/></div>
+                        </div>
+                    </div>
+
+                <!--    Thành phần thứ 4-->
+                   <div class="col-sm-12 col-md-3 info-box">
+                        <div class="box notification" style="background: rgba(233, 8, 0, 1) !important">
+                            <div class="heading">ĐÃ HỦY</div>
+                            <div class="title cancel-title"><span t-esc="widget.datatable.cancel_errors"/></div>
+                        </div>
+                    </div>
+        </div>
+        <br/>
+        <div class="row" style="margin: 0px 10px 0px 10px;">
+            <!-- Thành phần thứ 5 - Biểu đồ cột -->
+           <div class="col-6">
+                        <div class="card-header">
+                            <h3 class="text-center text-muted">
+                                Thống kê nhân viên phụ trách sửa lỗi
+                            </h3>
+                        </div>
+                        <div class="card-body">
+                            <div>
+                                <canvas id="error_chart">
+
+                                </canvas>
+                            </div>
+                        </div>
+                    </div>
+             <!-- Thành phần thứ 6 - Biểu đồ tròn -->
+            <div class="col-6">
+                <div class="card-header">
+                    <h3 class="text-center text-muted">
+                        Thống kê số lỗi theo chức năng
+                    </h3>
+                </div>
+                <div class="card-body">
+                    <div>
+                        <canvas id="functionality_chart">
+
+                        </canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br/>
+         <!-- Thành phần thứ 7 - Bảng dữ liệu -->
+        <div class="card overflow-hidden" id="div_table" style="margin:0px 50px 20px 50px">
+                <div class="card-header">
+                    <h3 class="mb-0">
+                        Thông Tin
+                    </h3>
+                </div>
+                <div class="card-body" style="border-top: 1px solid #eeeeee;padding:0px">
+                    <div id="tab_manage_reviews_all" class="tabcontent" style="display:block">
+                        <div class="table-responsive scrollbar table_scroll">
+                            <table class="table mb-0 fs--1 border-200 table-borderless">
+                                <thead class="bg-light">
+                                    <tr class="text-800 bg-200">
+                                        <th style="width:15%" class="align-middle text-center">Tên lỗi</th>
+                                        <th style="width:8%" class="align-middle text-center">Chức năng</th>
+                                        <th style="width:12%" class="align-middle text-center">Ngày tạo</th>
+                                        <th style="width:12%" class="align-middle text-center">Trạng thái</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="tbody_bugs_management_all">
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    </t>
+</templates>

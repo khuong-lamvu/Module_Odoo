@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!--action view-->
+        <record id="reports_skill_action" model="ir.actions.client">
+            <field name="name">Báo cáo kỹ năng</field>
+            <field name="tag">reports_skill_manage_reviews</field>
+        </record>
+    </data>
+</odoo>

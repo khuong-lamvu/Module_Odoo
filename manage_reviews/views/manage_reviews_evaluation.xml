@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <record id="view_evaluation_form" model="ir.ui.view">
+            <field name="name">manage_reviews.evaluation.form</field>
+            <field name="model">manage_reviews.evaluation</field>
+            <field name="arch" type="xml">
+                <form>
+                    <header>
+                        <field name="status" widget="statusbar" options="{'clickable': '1'}"/>
+                    </header>
+                    <sheet>
+                        <div style="float: right;">
+                            <field name="image_1920" string="Hình ảnh nhân sự" widget="image"/>
+                        </div>
+                        <group>
+                            <group>
+                                <field name="employee_id" string="Nhân sự"/>
+                                <field name="quanly_tructiep" string="Quản lý trực tiếp"/>
+                                <field name="truong_phong_ban" string="Trưởng phòng/Ban"/>
+                            </group>
+                            <group>
+                                <field name="chuc_vu" string="Chức vụ"/>
+                                <field name="phong_ban" string="Phòng ban"/>
+                                <field name="ngay_danh_gia" widget="date"/>
+                            </group>
+
+<!--                            <group>-->
+<!--                                <div class="o_hr_skills_editable o_hr_skills_group o_group_skills col-lg-5 d-flex flex-column">-->
+                                    <strong><span>Kỹ năng: </span></strong><field name="skill_type_id"/>
+                                    <field name="employee_skill_ids" string="Kỹ năng">
+                                        <tree>
+                                            <field name="skill_id" string="Chi tiết"/>
+                                            <field name="skill_level_id" string="Mức độ kỹ năng"/>
+                                            <field name="level_progress" widget="progressbar" string="Cấp độ"/>
+                                        </tree>
+                                    </field>
+<!--                                </div>-->
+<!--                            </group>-->
+                        </group>
+                        <group><field name="evaluation_template_id" string="Biểu mẫu đánh giá"/></group>
+                        <notebook>
+                            <page string="Đánh giá">
+                                <field name="score_ids">
+                                    <tree create="false" editable="top">
+                                        <field name="name" force_save="1"/>
+                                        <field name="trong_so_tc" sum="" force_save="1"/>
+                                        <field name="mucdo_yeu" style="white-space: normal; word-break: break-word;" force_save="1"/>
+                                        <field name="mucdo_trungbinh" style="white-space: normal; word-break: break-word;" force_save="1"/>
+                                        <field name="mucdo_kha" style="white-space: normal; word-break: break-word;" force_save="1"/>
+                                        <field name="mucdo_tot" style="white-space: normal; word-break: break-word;" force_save="1"/>
+                                        <field name="employee_unweighted_score" sum=""/>
+                                        <field name="employee_weighted_score" sum="" force_save="1"/>
+                                        <field name="manager_unweighted_score" sum=""/>
+                                        <field name="manager_weighted_score" sum="" force_save="1"/>
+                                    </tree>
+                                </field>
+                            </page>
+                        </notebook>
+
+                        <notebook>
+                            <page string="Kết quả đánh giá">
+                                <kanban>
+                                    <strong><span>Tổng điểm KPI: </span></strong><field name="kpi_score" string="Tổng điểm KPI"/>
+                                    <br/>
+                                    <strong><span>Xếp loại và quyết định: </span></strong><field name="result_6_month" string="Quyết định"/>
+                                </kanban>
+                                <hr/>
+                                <strong><span>Giải thích</span></strong>
+                                <br/>
+                                <span>Tổng điểm KPI nhỏ hơn 2.00: Xếp loại Yếu - Không tăng không giảm</span>
+                                <br/>
+                                <span>Tổng điểm KPI từ 2.00 đến 2.70: Xếp loại Trung bình - Tăng 5% lương</span>
+                                <br/>
+                                <span>Tổng điểm KPI từ 2.80 đến 3.10: Xếp loại Trung Khá - Tăng 10% lương</span>
+                                <br/>
+                                <span>Tổng điểm KPI từ 3.20 đến 4.00: Xếp loại Tốt - Tăng 15% lương</span>
+                                <hr/>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="view_employee_tree" model="ir.ui.view">
+            <field name="name">manage_reviews.evaluation.tree</field>
+            <field name="model">manage_reviews.evaluation</field>
+            <field name="arch" type="xml">
+                <tree string="Nhân sự">
+                    <field name="ten_nhansu" string="Tên nhân sự"/>
+                    <field name="chuc_vu" string="Chức vụ"/>
+                    <field name="quanly_tructiep" string="Quản lý trực tiếp"/>
+                    <field name="phong_ban" string="Phòng ban"/>
+                    <field name="status"
+                           widget="badge"
+                           decoration-success="status == 'da_danh_gia'"
+                           decoration-danger="status == 'chua_danh_gia'"
+                    />
+                    <field name="ngay_danh_gia" widget="date"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="view_employee_kanban" model="ir.ui.view">
+            <field name="name">manage_reviews.evaluation.kanban</field>
+            <field name="model">manage_reviews.evaluation</field>
+            <field name="arch" type="xml">
+                <kanban string="Nhân sự">
+                    <templates>
+                        <t t-name="kanban-box">
+                            <div t-attf-class="oe_kanban_global_click">
+                                <div style="display: flex; align-items: flex-start;">
+                                    <div><field name="image_1920" widget="image"/></div>
+                                    <div style="margin-left: 10px;">
+                                        <strong><span><field name="ten_nhansu"/></span></strong>
+                                        <br/>
+                                        <field name="chuc_vu" string="Chức vụ"/><br/>
+                                        <strong><span>Phòng/ban: </span></strong><field name="phong_ban"/>
+                                        <br/>
+                                        <strong><span>Người quản lý trực tiếp: </span></strong><field name="quanly_tructiep"/>
+                                        <br/>
+                                        <strong><span>Ngày đánh giá: </span></strong><field name="ngay_danh_gia" widget="date"/>
+                                    </div>
+                                </div>
+                                <div class="state" style="text-align: right;">
+                                    <field name="status"
+                                           widget="badge"
+                                           decoration-success="status == 'da_danh_gia'"
+                                           decoration-danger="status == 'chua_danh_gia'"
+                                    />
+                                </div>
+                            </div>
+                        </t>
+                    </templates>
+                </kanban>
+            </field>
+        </record>
+
+        <record id="view_student_search" model="ir.ui.view">
+            <field name="name">manage_reviews.evaluation.search</field>
+            <field name="model">manage_reviews.evaluation</field>
+            <field name="arch" type="xml">
+                <search string="Search Status">
+                    <field name="ten_nhansu" string="Tên nhân sự"/>
+                    <searchpanel>
+                        <field name="phong_ban" icon="fa-user-circle-o"/>
+                        <field name="status" icon="fa-sign-in"/>
+                    </searchpanel>
+                </search>
+            </field>
+        </record>
+    </data>
+</odoo>
